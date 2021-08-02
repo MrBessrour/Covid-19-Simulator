@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scn/world.gd" type="Script" id=1]
+
+[node name="world" type="Node2D"]
+script = ExtResource( 1 )
+population = 50
+Initial_Sick_Humans = 3
+
+[node name="humans" type="Node2D" parent="."]
+
+[node name="Days" type="Timer" parent="."]
+autostart = true
+
+[node name="output" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="days" type="Label" parent="output"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.615686, 1, 0, 1 )
+
+[node name="cases" type="Label" parent="output"]
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+
+[node name="Healthy" type="Label" parent="output"]
+margin_top = 36.0
+margin_right = 40.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+
+[node name="Recovered" type="Label" parent="output"]
+margin_top = 54.0
+margin_right = 40.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0, 0, 1, 1 )
+
+[node name="deaths" type="Label" parent="output"]
+margin_top = 72.0
+margin_right = 40.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+
+[node name="start" type="Button" parent="."]
+pause_mode = 2
+margin_left = 549.98
+margin_top = 7.47571
+margin_right = 590.98
+margin_bottom = 27.4757
+text = "start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Days" to="." method="_on_Days_timeout"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
